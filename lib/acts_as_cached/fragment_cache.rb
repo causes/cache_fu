@@ -19,10 +19,10 @@ module ActsAsCached
         # Rails < svn r8619
         ::ActionView::Helpers::CacheHelper.class_eval do
           def cache(name = {}, options = nil, &block)
-            @controller.cache_erb_fragment(block, name, options)
+            @controller.write_fragment(block, name, options)
           end
         end
-        ::ActionController::Base.fragment_cache_store = CACHE
+        ::ActionController::Base.cache_store = CACHE
       end
     end
 
